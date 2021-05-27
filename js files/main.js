@@ -33,7 +33,7 @@ product(products)
 $('.card').click(function(){
     var selectedProduct = $(this).attr('id');
     console.log(products[selectedProduct]);
-    $('#items').append('<span>'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button>delete</button>');
+    $('#items').append('<span>'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button id="btn">delete</button>');
     // localStorage.setItem('table',(products[selectedProduct].name,products[selectedProduct].price));
 
 })
@@ -46,7 +46,7 @@ $('.cardtable').click(function(){
    
 })
 var tableNumber= localStorage.getItem('tablee');
-$('#items').append('<span> table :'+tableNumber+'</span>')
+$('#items').append('<span> Table :  '+tableNumber+'</span>')
 //////////////////
 
 
