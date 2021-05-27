@@ -1,5 +1,7 @@
 body {
-  background-image: url("../photos/cifee\ house.jpg");
+  background-image: url("../photos/Coffeehouse.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .cards-list {
     z-index: 0;
@@ -60,7 +62,7 @@ body {
   
   @media all and (max-width: 500px) {
     .card-list {
-      /* On small screens, we are no longer using row direction but column */
+
       flex-direction: column;
     }
   }
