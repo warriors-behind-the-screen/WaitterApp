@@ -8,5 +8,14 @@ var products =[{cat:"coffe" ,name:"espresso",price:3.000,img:"photos\coffee\espr
            {cat:"water" ,name:"carbonated",price:4.500,img:"photos\water\carbonated"},
            {cat:"chicha" ,name:"apple",price:10.000,img:"photos\chicha\apple"},
            {cat:"chicha" ,name:"classic",price:9.000,img:"photos\chicha\classic"},          
-          ]
+          ];
+    
 
+var tables =[{table:"One"},{table:"Two"},{table:"Three"},{table:"Four"},{table:"Five"},{table:"Six"},{table:"Seven"},{table:"Eight"},{table:"Nine"},]
+
+function table(tables){
+    for (var i=0;i<tables.length; i++){
+        $(".cards-list").append('<div class="card 2"><div class="card_image"><img src="../photos/table.jpg" /></div><div class="card_title title-white"><p>'+tables[i].table+'</p></div></div>"')
+    }
+}
+table(tables)
