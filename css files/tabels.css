@@ -1,5 +1,7 @@
 body {
-  background-image: url("../photos/cifee\ house.jpg");
+  background-image: url("../photos/cifee-house.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .cards-list {
     z-index: 0;
@@ -10,7 +12,7 @@ body {
     flex-wrap: wrap;
   }
   
-  .card {
+  .cardtable {
     margin: 30px auto;
     width: 300px;
     height: 300px;
@@ -20,20 +22,20 @@ body {
     transition: 0.4s;
   }
   
-  .card .card_image {
+  .cardtable .card_image {
     width: inherit;
     height: inherit;
     border-radius: 60px;
   }
   
-  .card .card_image img {
+  .cardtable .card_image img {
     width: inherit;
     height: inherit;
     border-radius: 40px;
     object-fit: cover;
   }
   
-  .card .card_title {
+  .cardtable .card_title {
     text-align: center;
     border-radius: 0px 0px 40px 40px;
     font-family: sans-serif;
@@ -44,7 +46,7 @@ body {
     margin-left: -150px;
   }
   
-  .card:hover {
+  .cardtable:hover {
     transform: scale(0.9, 0.9);
     box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
       -5px -5px 30px 15px rgba(0,0,0,0.22);
@@ -60,7 +62,7 @@ body {
   
   @media all and (max-width: 500px) {
     .card-list {
-      /* On small screens, we are no longer using row direction but column */
+
       flex-direction: column;
     }
   }
