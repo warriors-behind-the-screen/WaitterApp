@@ -69,6 +69,14 @@ body{
   .order{
       display: center;
       background-color: white;
-      height: 10em;
+      height: 20em;
+
+      opacity: 0.4;
+
+
+  }
+
+  #items{
+      float: left;
 
   }
