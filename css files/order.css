@@ -15,7 +15,7 @@ body{
   .card {
     margin: 30px auto;
     width: 150px;
-    height: 300px;
+    height: 200px;
     border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
     cursor: pointer;
@@ -68,11 +68,8 @@ body{
   }
   .order{
       display: center;
-      background-color: white;
-      height: 20em;
-      background-color: white;
-      opacity: 0.4;
-
+      background-image: url("../photos/orders.jpg");
+      height: 15em;
 
   }
 
@@ -80,3 +77,9 @@ body{
       float: left;
 
   }
+  button {
+      background-color: #4CAF50;
+    }
+    #btn {
+        background-color: #fb1919;
+      }
