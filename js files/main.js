@@ -33,7 +33,7 @@ product(products)
 $('.card').click(function(){
     var selectedProduct = $(this).attr('id');
     console.log(products[selectedProduct]);
-    $('#items').append('<span>'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button>delete</button>');$('#items').append('<span>'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button id="btn">delete</button>');
+    $('#items').append('<span>'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button id="btn">delete</button>');
     localStorage.setItem(JSON.stringify($(this).attr('id')),JSON.stringify(products[selectedProduct].price))
     Total(localStorage);
 
