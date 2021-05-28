@@ -1,5 +1,5 @@
 body{
-    background-image: url("../photos/coffee-house\ tabels.jpg");
+    background-image: url("../photos/b.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -8,6 +8,6 @@ body{
     width: 20em;
     height: 20em;
     background-color: white;
-    opacity: 0.4;
+    opacity: 0.7;
 }
 
