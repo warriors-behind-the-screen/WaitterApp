@@ -30,23 +30,37 @@ function product(products){
 
 product(products)
 ///////////////TO CLICK AND GIT ORDERS
+var count = 0 
 $('.card').click(function(){
+
     var selectedProduct = $(this).attr('id');
     console.log(products[selectedProduct]);
-    $('#items').append('<span>'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button id="btn">delete</button>');
+    $('#items').append('<span id="n'+count+'">'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span id="n'+count+'">'+products[selectedProduct].price+'  DT '+'</span>'+'<button class="btn" id="n'+count+'" onclick="deleteProduct('+count+')">delete</button>');
+    count++
     localStorage.setItem(JSON.stringify($(this).attr('id')),JSON.stringify(products[selectedProduct].price))
     Total(localStorage);
-
+    $("#n"+count).click(function(){
+       $("#n"+count).remove()
+    })
 
 
 })
+// function for deleteing product from order list
+function deleteProduct(prodId){
+    console.log(prodId)
+    // alert(prodId)
+   $(`#n${prodId}`).remove()
+   $(`#n${prodId}`).remove()
+   $(`#n${prodId}`).remove()
+
+}
 /////////////////TO CLICK TO GIT OUR NUMBER OF TABLE
 $('.cardtable').click(function(){
+
     var arrTables=[];
     var selectedTable = $(this).attr('id');
     console.log(tables[selectedTable]);
     localStorage.setItem('tablee',JSON.stringify(tables[selectedTable].table));
-   
 })
 var tableNumber= localStorage.getItem('tablee');
 $('#items').append('<span> Table :  '+tableNumber+'</span>')
@@ -65,9 +79,7 @@ function Total(localStorage){
 
 
 $('#sendorder').click(function(){
-    var thistable=('#sendorder').first()
-    console.log(thistable)
-    //$('#currentorders').append(<span></span>)
+    
 
 });
 
