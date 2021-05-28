@@ -15,12 +15,12 @@ var tables =[{table:"One"},{table:"Two"},{table:"Three"},{table:"Four"},{table:"
 //////////////FUNCTION TABELS
 function table(tables){
     for (var i=0;i<tables.length; i++){
-        $(".cards-list").append('<a href="order.html"><div id='+ i +' class="cardtable" ><div class="card_image"><img src="../photos/table.jpg" /></div><div class="card_title title-white"><p>'+tables[i].table+'</p></div></div>"')
+        $(".cards-list").append('<a href="order.html"><div id='+ i +' class="cardtable" ><div class="card_image"><img src="../photos/table.jpg" /></div><div class="card_title title-white"><p>'+tables[i].table+'</p></div></div></a>')
     }
 }
 
 table(tables)
-/////////////////FUNCTION PRODUCTS
+/////////////////FUNCTION PRODUCTS appends selected 
 function product(products){  
     for (var i=0;i<products.length; i++){
         $(".prod-list").append('<div id='+ i +' class="card"   ><div class="card_image"><img src="'+products[i].img+'" /></div><div class="card_title title-white"><p></p></div></div>"')
@@ -34,7 +34,9 @@ $('.card').click(function(){
     var selectedProduct = $(this).attr('id');
     console.log(products[selectedProduct]);
     $('#items').append('<span>'+products[selectedProduct].name+'   : '+'</span>'+'<span>'+products[selectedProduct].price+'  DT '+'</span>'+'<button>delete</button>');
-    // localStorage.setItem('table',(products[selectedProduct].name,products[selectedProduct].price));
+    localStorage.setItem(JSON.stringify($(this).attr('id')),JSON.stringify(products[selectedProduct].price))
+    Total(localStorage);
+
 
 })
 /////////////////TO CLICK TO GIT OUR NUMBER OF TABLE
@@ -48,6 +50,25 @@ $('.cardtable').click(function(){
 var tableNumber= localStorage.getItem('tablee');
 $('#items').append('<span> table :'+tableNumber+'</span>')
 //////////////////
+
+function Total(localStorage){
+    var total=0;
+    for (var i=1;i<localStorage.length;i++){
+        total=total*1 + localStorage.getItem(localStorage.key(i))*1
+    }
+    $('#totalValue').html('')
+    $('#totalValue').append(total+'DT')
+    
+}
+
+
+
+$('#sendorder').click(function(){
+    var thistable=('#sendorder').first()
+    console.log(thistable)
+    //$('#currentorders').append(<span></span>)
+
+});
 
 
 
