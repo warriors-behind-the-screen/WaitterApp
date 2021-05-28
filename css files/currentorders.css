@@ -4,3 +4,10 @@ body{
     background-size: 100%;
 }
 
+#currentorders{
+    width: 20em;
+    height: 20em;
+    background-color: white;
+    opacity: 0.4;
+}
+
