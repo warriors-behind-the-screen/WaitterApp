@@ -2,6 +2,8 @@ body{
     background-image: url("../photos/Coffeehouse.jpeg");
     background-repeat: no-repeat;
     background-size: 100%;
+    font-size: larger;
+
 }
 .prod-list {
     z-index: 0;
@@ -70,11 +72,22 @@ body{
       display: center;
       background-image: url("../photos/orders.jpg");
       height: 15em;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
   }
 
-  #items{
-      float: left;
+ #items1{
+      text-align: center;
+      background-color: white;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      margin-top: 5%;
+      height: 50%;
+      margin-left:10%;
+      background-image: url('../photos/orders.jpg');
+      margin: auto;
+      width: 50%;
+      border: 3px solid green;
+     
 
   }
   button {
@@ -83,3 +96,6 @@ body{
     .btn {
         background-color: #fb1919;
       }
+
+
+
