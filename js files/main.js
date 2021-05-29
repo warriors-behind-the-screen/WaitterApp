@@ -6,24 +6,31 @@ var products =[{cat:"coffe" ,name:"Espresso",price:3.000,img:"../photos/coffee/e
            {cat:"juice" ,name:"Kiwi",price:6.500,img:"../photos/juice/kiwi.jpg"},
            {cat:"juice" ,name:"Cocktail",price:7.000,img:"../photos/juice/cocktail.jpg"},
            {cat:"water" ,name:"Normal Water",price:2.000,img:"../photos/water/normal.jpg"},
-           {cat:"water" ,name:"Narbonated Water",price:4.500,img:"../photos/water/carbonated.jpg"},
+           {cat:"water" ,name:"Carbonated Water",price:4.500,img:"../photos/water/carbonated.jpg"},
            {cat:"chicha" ,name:"Chicha Apple",price:10.000,img:"../photos/chicha/apple.png"},
-           {cat:"chicha" ,name:"Classic",price:9.000,img:"../photos/chicha/classic.png"},          
+           {cat:"chicha" ,name:"Chicha Classic",price:9.000,img:"../photos/chicha/classic.png"},          
           ];
+
+         
 ////////ARRAY OF TABELS
-var tables =[{table:"One"},{table:"Two"},{table:"Three"},{table:"Four"},{table:"Five"},{table:"Six"},{table:"Seven"},{table:"Eight"},{table:"Nine"},]
+var tables ={one: [],two:[] ,three: [],four: [],five: [],six: [],seven: [],eight: [],nine: []}
+// localStorage.setItem('tables',JSON.stringify(tables)) 
 //////////////FUNCTION TABELS
 function table(tables){
-    for (var i=0;i<tables.length; i++){
-        $(".cards-list").append('<a href="order.html"><div id='+ i +' class="cardtable" ><div class="card_image"><img src="../photos/table.jpg" /></div><div class="card_title title-white"><p>'+tables[i].table+'</p></div></div></a>')
+    var i = 0
+    for (var key in tables){
+        // localStorage.setItem(key,JSON.stringify([]))
+        $(".cards-list").append('<a href="order.html"><div id='+ key +' class="cardtable" ><div class="card_image"><img src="../photos/table.jpg" /></div><div class="card_title title-white"><p>'+key+'</p></div></div></a>')
+        i++
     }
 }
 
 table(tables)
+
 /////////////////FUNCTION PRODUCTS appends selected 
 function product(products){  
     for (var i=0;i<products.length; i++){
-        $(".prod-list").append('<div id='+ i +' class="card"   ><div class="card_image"><img src="'+products[i].img+'" /></div><div class="card_title title-white"><p></p></div></div>"')
+        $(".prod-list").append('<div id='+ i +' class="card"><div class="card_image"><img src="'+products[i].img+'" /></div><div class="card_title title-white"></div></div>"')
     }
 }
 
@@ -31,57 +38,77 @@ function product(products){
 product(products)
 ///////////////TO CLICK AND GIT ORDERS
 var count = 0 
+var parsed =[]
 $('.card').click(function(){
 
+    
+
+    // var addedItems=[];
     var selectedProduct = $(this).attr('id');
-    console.log(products[selectedProduct]);
+    var selectedTable = JSON.parse(localStorage.getItem('table'))
+    // console.log(selectedTable);
+    var table = JSON.parse(localStorage[selectedTable])
+    // console.log(table);
+    table.push(products[selectedProduct])
+    localStorage.setItem(selectedTable,JSON.stringify(table))
+    
     $('#items').append('<span id="n'+count+'">'+'..................'+products[selectedProduct].name+'   : '+'</span>'+'<span id="n'+count+'">'+products[selectedProduct].price+'  DT '+'</span>'+'<button class="btn" id="n'+count+'" onclick="deleteProduct('+count+')">delete</button>');
     count++
-    localStorage.setItem(JSON.stringify($(this).attr('id')),JSON.stringify(products[selectedProduct].price))
-    Total(localStorage);
-    $("#n"+count).click(function(){
-       $("#n"+count).remove()
-    })
+    // function total(){
+    //     var total=0;
+    //     total=total+products[selectedProduct].price;
+    //     $('#total').html('');
+    //     $('#total').html('Total = 'total);
+
+    // }
+    // total();
+
 
 
 })
 // function for deleteing product from order list
 function deleteProduct(prodId){
-    console.log(prodId)
-    // alert(prodId)
+
    $(`#n${prodId}`).remove()
    $(`#n${prodId}`).remove()
    $(`#n${prodId}`).remove()
 
 }
-/////////////////TO CLICK TO GIT OUR NUMBER OF TABLE
+/////////////////TO CLICK TO GET OUR NUMBER OF TABLE
 $('.cardtable').click(function(){
-
-    var arrTables=[];
     var selectedTable = $(this).attr('id');
-    console.log(tables[selectedTable]);
-    localStorage.setItem('tablee',JSON.stringify(tables[selectedTable].table));
+    // console.log(selectedTable);
+    //console.log(tables[selectedTable]);
+    localStorage.setItem('table',JSON.stringify(selectedTable));
 })
-var tableNumber= localStorage.getItem('tablee');
-$('#items').append('<span> Table :  '+tableNumber+'</span>')
+var tableNumber= localStorage.getItem('table');
+var tableNumber2=JSON.parse(tableNumber)
+$('#items').append('<span> Table :  '+tableNumber2+'</span>')
 //////////////////
-
-function Total(localStorage){
-    var total=0;
-    for (var i=1;i<localStorage.length;i++){
-        total=total*1 + localStorage.getItem(localStorage.key(i))*1
-    }
-    $('#totalValue').html('')
-    $('#totalValue').append(total+'DT')
-    
-}
-
-
-
+/////////////////////////
+///////////////////////////////
+// sending order to another div
 $('#sendorder').click(function(){
+    var selectedProduct = $(this).attr('id');
+    $("#dd").animate({
+        width: "toggle",
+        right: '250px',
+    })
+    var table = JSON.parse(localStorage.getItem('table'))
+    var ORDERS = JSON.parse(localStorage[table])
+   for(var i =0;i<ORDERS.length;i++){
+    $('#items1').append('<span id="n'+count+'">'+'.....Table :'+table+'   : '+'</span>'+'<span id="n'+count+'">'+ORDERS[i].name+' :'+'</span>'+'<span id="n'+count+'">'+ORDERS[i].price+' DT'+'</span>');
+
+   }
+   $('#items1').append('<button class="button" id="n'+count+'" onclick="deleteProduct('+count+')">Update</button>')
+
+})
+
+
+
+        
     
 
-});
 
 
 
